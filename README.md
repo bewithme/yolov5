@@ -73,7 +73,7 @@ Clone repo and install [requirements.txt](https://github.com/ultralytics/yolov5/
 ```bash
 git clone https://github.com/ultralytics/yolov5  # clone
 cd yolov5
-pip install -r requirements.txt  # install
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ # install
 ```
 
 </details>
@@ -145,6 +145,34 @@ python train.py --data coco.yaml --cfg yolov5n.yaml --weights '' --batch-size 12
 <img width="800" src="https://user-images.githubusercontent.com/26833433/90222759-949d8800-ddc1-11ea-9fa1-1c97eed2b963.png">
 
 </details>
+
+<details>
+<summary>Training Custom Dataset </summary>
+
+1. convert pascal dataset to  yolo .txt data format
+
+```bash
+python VOC2YOLOv5.py
+
+```
+
+2. create training dataset config yaml file as the data/coco128.yaml
+
+3. modify the number of classes to custom dataset actual classes in models/yolov5s.yaml or models/yolov5m.yaml or models/yolov5l.yaml or models/yolov5x.yaml
+
+4. run the command to train 
+
+```bash
+python train.py --data custom_dataset.yaml --cfg yolov5n.yaml --weights '' --batch-size 128
+                                       yolov5s                                64
+                                       yolov5m                                40
+                                       yolov5l                                24
+                                       yolov5x                                16
+```
+
+
+</details>
+
 
 <details open>
 <summary>Tutorials</summary>
